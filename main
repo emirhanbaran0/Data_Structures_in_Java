@@ -2,9 +2,9 @@
 public class Main {
 
 	public static void main(String[] args) {
-		ExClass A=new ExClass();   //We created the nodes in here.
-		ExClass B=new ExClass();
-		ExClass C=new ExClass();
+		NodeClass A=new ExClass();   //We created the nodes in here.
+		NodeClass B=new ExClass();
+		NodeClass C=new ExClass();
 				
 		A.number=11;
 		B.number=12;
