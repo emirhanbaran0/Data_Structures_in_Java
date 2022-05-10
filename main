@@ -12,11 +12,14 @@ public class Main {
 		
 		A.next=B;  //We tied the nodes together in here.
 		B.next=C;
+		C.next=null;
 		
-		System.out.println(A.next.number);
-		System.out.println(B.next.number);
-				
-
+		NodeClass temp=A;
+		while(temp.next!=null)
+		{
+			System.out.print.ln(temp.number);
+			temp=temp.next;
+		}
 	}
 
 }
