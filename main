@@ -1,0 +1,22 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		ExClass A=new ExClass();   //We created the nodes in here.
+		ExClass B=new ExClass();
+		ExClass C=new ExClass();
+				
+		A.number=11;
+		B.number=12;
+		C.number=13;
+		
+		A.next=B;  //We tied the nodes together in here.
+		B.next=C;
+		
+		System.out.println(A.next.number);
+		System.out.println(B.next.number);
+				
+
+	}
+
+}
