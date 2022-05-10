@@ -1,0 +1,6 @@
+public class NodeClass {
+
+	int number;
+	NodeClass next;
+	
+}
