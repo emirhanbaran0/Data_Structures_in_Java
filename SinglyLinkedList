@@ -42,7 +42,7 @@ public class SinglyLinkedList {
 				temp=temp.next;
 				
 			}
-			System.out.println(tail.number);
+			System.out.println(End);
 		}
 		
 	}
