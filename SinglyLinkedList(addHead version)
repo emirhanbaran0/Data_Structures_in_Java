@@ -1,0 +1,74 @@
+
+public class ListStructure {
+	
+	
+	NodeClass head=null;
+	NodeClass tail=null;
+	
+	
+	
+	public void addNode(int data)
+	{
+		
+		NodeClass element=new ExClass();
+		element.number=data;
+		element.next=null;
+		
+		if(head==null)
+		{
+			head=element;
+			tail=element;
+			System.out.println("Single Linked List is created Succesfully!");
+		}
+		else
+		{
+			tail.next=element;
+			tail=element;
+			System.out.println(" The node is added into the list Successfully!");
+		}
+	}
+	
+	public void addHead(int data)
+	{
+		
+		NodeClass element=new ExClass();
+		element.number=data;
+		element.next=null;
+		
+		if(head==null)
+		{
+			head=element;
+			tail=element;
+			System.out.println("Single Linked List is created Succesfully!");
+		}
+		else
+		{
+			element.next=head;
+			head=element;
+			System.out.println(" The node is added into the list Successfully!");
+		}
+	}
+	
+	
+	public void showList()
+	{ 	
+		if(head==null)
+		{
+			System.out.println("List is Empty!");
+		}
+		else
+		{
+			NodeClass temp=head;
+			System.out.print("Head->");
+			while(temp!=null)
+			{	
+				System.out.print(temp.number+" -> ");
+				temp=temp.next;
+				
+			}
+			System.out.println("Son");
+		}
+		
+	}
+
+}
