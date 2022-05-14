@@ -1,0 +1,225 @@
+
+public class ListStructure {
+	
+	
+	NodeClass head=null;
+	NodeClass tail=null;
+	
+	
+	
+	public void addTail(int data)
+	{
+		
+		NodeClass element=new NodeClass();
+		element.number=data;
+		element.next=null;
+		
+		if(head==null)
+		{
+			head=element;
+			tail=element;
+			System.out.println("Single Linked List is created Succesfully!");
+		}
+		else
+		{
+			tail.next=element;
+			tail=element;
+			System.out.println(" The tail is added into the list Successfully!");
+		}
+	}
+	
+	public void addHead(int data)
+	{
+		
+		NodeClass element=new NodeClass();
+		element.number=data;
+		element.next=null;
+		
+		if(head==null)
+		{
+			head=element;
+			tail=element;
+			System.out.println("Single Linked List is created Succesfully!");
+		}
+		else
+		{
+			element.next=head;
+			head=element;
+			System.out.println(" The head is added into the list Successfully!");
+		}
+	}
+	
+	
+	
+	public void addNode(int index,int data)
+	{
+		
+		NodeClass element=new NodeClass();
+		element.number=data;
+		element.next=null;
+		
+		if(head==null && index==0)
+		{
+			head=element;
+			tail=element;
+			System.out.println("Single Linked List is created Succesfully!");
+		}
+		else if(head!=null && index==0)
+		{
+			addHead(data);
+		}
+		else
+		{
+			int n=0; //number of nodes
+			NodeClass temp=head;
+			NodeClass temp2=head;
+			while(temp!=null)
+			{
+				n++;
+				temp2=temp;
+				temp=temp.next;
+			}
+			if(n==index)
+			{
+				temp2.next=element;
+				element.next=temp;
+				System.out.println("Element added successfully");
+			}
+			else
+			{
+				temp=head;
+				temp2=head;
+				int i=0; //We will store the index with this variable
+				while(i!=index)
+				{
+					temp2=temp;
+					temp=temp.next;						
+					i++;
+				}
+				temp2.next=element;
+				element.next=temp;	
+				System.out.println(index+". element is added!");
+			}
+		}
+	}
+	
+	public void deleteHead()
+	{
+		if(head==null)
+		{
+			System.out.println("The lis is not created yet.");
+		}
+		else if(head.next==null)
+		{
+			head=null;
+			tail=null;
+			System.out.println("You deleted all of the elements in the list!");
+		}
+		else
+		{
+			head=head.next;
+			System.out.println("The head is deleted successfully!");
+		}
+	}
+	
+	public void deleteTail()
+	{
+		if(tail==null)
+		{
+			System.out.println("The lis is not created yet.");
+		}
+		else if(tail==head)
+		{
+			head=null;
+			tail=null;
+			System.out.println("You deleted all of the elements in the list!");
+		}
+		else
+		{
+			NodeClass temp=head;
+			NodeClass temp2=head;
+			while(temp.next!=null)
+			{
+				temp2=temp;
+				temp=temp.next;
+			}
+			temp2.next=null;
+			tail=temp2;
+			
+			System.out.println("The tail is deleted successfully!");
+		}
+	}
+	
+	public void deleteNode(int index)
+	{
+		if(head==null)
+		{
+			System.out.println("The list is not created yet!");
+		}
+		else if(head.next==null && index==0)
+		{
+			head=null;
+			tail=null;
+			System.out.println("You deleted all the nodes in the list successfully!");
+		}
+		else if(head.next!=null && index==0)
+		{
+			head=head.next;
+			System.out.println("Head is deleted from the list successfully!");
+		}
+		else
+		{
+			int n=0; //number of nodes
+			NodeClass temp=head;
+			NodeClass temp2=head;
+			while(temp!=null)
+			{
+				n++;
+				temp2=temp;
+				temp=temp.next;
+			}
+			if(n==index)
+			{
+				temp2.next=null;
+				tail=temp2;
+			}
+			else
+			{
+				int j=0; //We will store the node which is entered by user with that variable.
+				temp=head;
+				temp2=head;
+				while(j!=index)
+				{
+					temp2=temp;
+					temp=temp.next;
+					j++;
+				}
+				temp2.next=temp.next;
+				
+				System.out.println("The node is deleted successfully!");
+			}
+		}
+	}
+	
+	public void showList()
+	{ 	
+		if(head==null)
+		{
+			System.out.println("List is Empty!");
+		}
+		else
+		{
+			NodeClass temp=head;
+			System.out.print("Head->");
+			while(temp!=null)
+			{	
+				System.out.print(temp.number+" -> ");
+				temp=temp.next;
+				
+			}
+			System.out.println("Son");
+		}
+		
+	}
+
+}
