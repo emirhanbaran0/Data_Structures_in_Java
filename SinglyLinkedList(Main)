@@ -1,0 +1,89 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+	ListStructure list=new ListStructure();
+	Scanner scan=new Scanner(System.in);
+	int input;
+	int data;
+	int index;
+	boolean control=true;
+	while(control)
+	{
+		System.out.println("0-Exit");
+		System.out.println("1-Add Head;");
+		System.out.println("2-Add Tail;");
+		System.out.println("3-Add Node;");
+		System.out.println("4-Delete Head;");
+		System.out.println("5-Delete Tail;");
+		System.out.println("6-Delete Node;");
+		System.out.println("7-Show the List!");
+		System.out.println();
+		System.out.println("Enter your decision: ");
+		input=scan.nextInt();
+		System.out.println();
+		switch(input)
+		{
+		case 0 :
+		{
+			control=false;
+			System.out.println("Program is finished!");
+			break;
+		}
+		case 1 :
+		{
+			System.out.println("Enter your data: ");
+			data=scan.nextInt();
+			list.addHead(data);
+			break;
+		}
+		case 2 :
+		{
+			System.out.println("Enter your data: ");
+			data=scan.nextInt();
+			list.addTail(data);
+			break;
+		}
+		case 3 :
+		{
+			System.out.println("Enter the index: ");
+			index=scan.nextInt();
+			System.out.println("Enter your data: ");
+			data=scan.nextInt();
+			list.addNode(index, data);
+			break;
+		}
+		case 4 :
+		{
+			list.deleteHead();
+			break;
+		}
+		
+		case 5 : 
+		{
+			list.deleteTail();
+			break;
+		}
+		case 6: 
+		{
+			System.out.println("Enter the index: ");
+			index=scan.nextInt();
+			list.deleteNode(index);
+			break;
+		}
+		case 7 : 
+		{
+			list.showList();
+			break;
+		}
+		default:
+		{
+			System.out.println("Your decision is invalid please choose valid decision!");
+			break;
+		}
+	}
+	
+	}
+	}
+}
