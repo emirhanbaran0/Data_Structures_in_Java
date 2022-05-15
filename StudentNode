@@ -1,0 +1,31 @@
+
+public class StudentNode {
+
+	int number;
+	String name;
+	String surname;
+	int midternExam;
+	int finalExam;
+	double avaragePuan;
+	String status;
+	
+	StudentNode next;
+	StudentNode(int number,String name,String surname,int midternExam,int finalExam)
+	{
+		this.number=number;
+		this.name=name;
+		this.surname=surname;
+		this.midternExam=midternExam;
+		this.finalExam=finalExam;
+		
+		avaragePuan=midternExam*0.4+finalExam*0.6;
+		if(avaragePuan>=50)
+		{
+			this.status="Successful!";
+		}
+		else
+			this.status="Failed!";
+		
+		this.next=null;
+	}
+}
