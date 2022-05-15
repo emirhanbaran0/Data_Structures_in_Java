@@ -1,0 +1,141 @@
+import java.util.Scanner;
+
+public class StudentList {
+
+	
+	Scanner scan=new Scanner(System.in);
+	StudentNode head;
+	StudentNode tail;
+	StudentNode temp;
+	StudentNode temp2;
+	
+	int number;
+	String name;
+	String surname;
+	int midternExam;
+	int finalExam;
+	double avaragePuan;
+	String status;
+	
+	public void addStudent()
+
+	{
+		System.out.println("Enter the Student Data: ");
+		System.out.println("Number"); number=scan.nextInt();
+		scan.nextLine();
+		System.out.println("Name"); name=scan.nextLine();
+		System.out.println("Surname"); surname=scan.nextLine();
+		System.out.println("Midtern Exam"); midternExam=scan.nextInt();
+		System.out.println("Final Exam"); finalExam=scan.nextInt();
+		
+		StudentNode student=new StudentNode(number,name,surname,midternExam,finalExam);
+		
+		if(head==null)
+		{
+			head=student;
+			tail=student;
+			System.out.println("The list of student created and first student added successfully!");
+		}
+		else
+		{
+			student.next=head;
+			head=student;
+			System.out.println(" Student added Successfully!");
+		}
+	}
+	
+	public void deleteStudent()
+	{
+		if(head==null)
+		{
+			System.out.println("There is no student to delete.The list is Empty!");
+		}
+		else
+		{
+			
+			System.out.println("Enter the number of stuent you want to delete:  ");
+			number=scan.nextInt();
+			 if(number==head.number && head.next==null)
+				{
+					head=null;
+					tail=null;
+					System.out.println("Student with student number "+ number +" has been successfully deleted!");
+				}
+				else if(number==head.number && head.next!=null)
+				{
+					head.next=head;
+					System.out.println("Student with student number "+ number +" has been successfully deleted!");
+				}
+				else
+				{
+					temp=head;
+					temp2=head;
+					while(temp.next!=null)
+					{
+						if(temp.number==number)
+						{
+							temp2.next=temp.next;
+							System.out.println("Student with student number "+ number +" has been successfully deleted!");
+						}
+						temp2=temp;
+						temp=temp.next;
+					} 
+					
+					if(temp.number==number) //While cycle is not consider the last iterator that's why we should control last iterator by manually!
+					{
+						temp2.next=null;
+						tail=temp2;
+						System.out.println("Student with student number "+ number +" has been successfully deleted!");
+					}
+					
+				}
+		}
+		
+	}
+
+	public void showListofStudent()
+	{
+		temp=head;
+		while(temp.next!=null)
+		{
+			System.out.println("******************************");
+			System.out.println("The data of student with"+temp.number +"student number: ");
+			System.out.println("Name: "+temp.name);
+			System.out.println("Surname: "+temp.surname);
+			System.out.println("Midtern Exam: "+temp.midternExam);
+			System.out.println("Final Exam: "+temp.finalExam);
+			System.out.println("Avarage Puan: "+temp.avaragePuan);
+			System.out.println("Status: "+temp.status);
+			System.out.println("******************************");
+			temp=temp.next;
+		}
+	}
+	
+	public void mostSuccessfulStudent()
+	{
+		temp=head;
+		double puan=0;
+		StudentNode mostSuccessStudent=null;
+		
+		while(temp.next!=null)
+		{
+			if(temp.avaragePuan>puan)
+			{
+				mostSuccessStudent=temp;
+				puan=temp.avaragePuan;
+			}
+			temp=temp.next;
+		}
+		System.out.println("------------------------------------");
+		System.out.println("The data of Most Successful Student");
+		System.out.println("Number: "+mostSuccessStudent.number);
+		System.out.println("Name: "+mostSuccessStudent.name);
+		System.out.println("Surname: "+mostSuccessStudent.surname);
+		System.out.println("Midtern Exam: "+mostSuccessStudent.midternExam);
+		System.out.println("Final Exam: "+mostSuccessStudent.finalExam);
+		System.out.println("Avarage Puan: "+mostSuccessStudent.avaragePuan);
+		System.out.println("Status: "+mostSuccessStudent.status);
+		System.out.println("------------------------------------");
+	}
+	
+}
