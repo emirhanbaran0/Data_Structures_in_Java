@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class main {
+
+	public static void main(String[] args) {
+		int choice=-1;
+		StudentList ListofStudent=new StudentList();
+		
+		Scanner scan=new Scanner(System.in);
+		
+		while(choice!=0)
+		{
+			System.out.println();
+			System.out.println("Student List Menu: ");
+			System.out.println("1-Registiration");
+			System.out.println("2-Delete Student");
+			System.out.println("3-Show the Student List");
+			System.out.println("4-Show the most Successful Student");
+			System.out.println("Your Choice: ");
+			choice=scan.nextInt();
+			System.out.println();
+			
+			switch(choice)
+			{
+			case 0:
+				System.out.println("Program is end! ");
+				break;
+			case 1:
+				ListofStudent.addStudent();
+				
+				break;
+			case 2:
+				ListofStudent.deleteStudent();
+				break;
+			case 3:
+				ListofStudent.showListofStudent();
+				break;
+			case 4:
+				ListofStudent.mostSuccessfulStudent();
+				break;
+			default:
+				System.out.println("Your choice is invalid.Please choose a valid choice!");
+				break;
+			}
+		}
+
+	}
+
+}
