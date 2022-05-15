@@ -1,0 +1,118 @@
+package DoublyLinkedList;
+
+public class ListStructure {
+
+	NodeClass head = null;
+	NodeClass tail = null;
+
+	public void addHead(int data) {
+		NodeClass element = new NodeClass(data);
+		if (head == null) {
+			head = element;
+			tail = element;
+			System.out.println("Doubly Linked List created successfully!");
+		} else {
+			element.next = head;
+			head.prev = element;
+			element.prev = null;
+			head = element;
+			System.out.println("Head is add into the List Successfully!");
+		}
+
+	}
+
+	public void addTail(int data) {
+		NodeClass element = new NodeClass(data);
+		if (head == null) {
+			head = element;
+			tail = element;
+			System.out.println("Doubly Linked List created successfully!");
+		} else {
+
+			element.next = null;
+			tail.next = element;
+			element.prev = tail;
+			tail = element;
+			System.out.println("Tail is add into the List Successfully!");
+		}	 
+
+	}
+	
+	public void addNode(int index,int data)
+	{
+		NodeClass element=new NodeClass(data);
+		NodeClass temp=head;
+		int n=0;   //we will store the node index with this variable.
+		if(index==0 && head==null)
+		{
+			head=element;
+			System.out.println("Doubly Linked List created successfully!");
+		}
+		else if(index==0 && head!=null)
+		{
+			element.next = head;
+			head.prev = element;
+			element.prev = null;
+			head = element;
+			System.out.println("Head is add into the List Successfully!");
+		}
+		else {
+			while(n!=index)
+			{
+				temp=temp.next;
+				n++; 
+			}
+			if(n>index)  
+			{
+				element.next = null;
+				tail.next = element;
+				element.prev = tail;
+				tail = element;
+				System.out.println("Tail is add into the List Successfully!");
+			}		
+				else
+				{
+					NodeClass temp2=head;
+					int i=0;
+					while(i!=index)
+					{
+						temp2=temp;
+						temp=temp.next;
+						i++;
+					}
+					temp2.next=element;
+					temp.prev=element;
+					element.next=temp;
+					element.prev=temp2;
+					System.out.println("Node is add into the List Successfully!");
+				}
+			}
+		
+		
+	}
+	public void showList()
+	{
+		NodeClass temp=head;
+		System.out.print("Start ->");
+		while(temp.next!=null)
+		{
+		  System.out.print(temp.data+" -> ");
+		  temp=temp.next;
+		}
+		System.out.print(temp.data+" -> ");
+		System.out.print("End");
+	}
+	public void showListReverse()
+	{
+		NodeClass temp=tail;
+		System.out.print("Start ->");
+		while(temp.prev!=null)
+		{
+		  System.out.print(temp.data+" -> ");
+		  temp=temp.prev;
+		}
+		System.out.print(temp.data+" -> ");
+		System.out.print("End");
+	}
+
+}
