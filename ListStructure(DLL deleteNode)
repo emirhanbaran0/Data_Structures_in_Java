@@ -178,7 +178,7 @@ public class ListStructure {
 				temp.next.prev=temp.prev;
 				temp.next=null;
 				temp.prev=null;
-				
+				System.out.println("The tail is deleted successfully!");
 			}
 		}
 	}
