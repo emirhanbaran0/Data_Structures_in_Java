@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+	CustomerList list=new CustomerList();
+	Scanner scan=new Scanner(System.in);
+	int input;
+	int data;
+	int index;
+	boolean control=true;
+	while(control)
+	{
+		System.out.println("0-Exit");
+		System.out.println("1-Add Customer;");
+		System.out.println("2-Delete Customer;");
+		System.out.println("3-Update Customer Product ;");
+		System.out.println("4-Find Customer ;");
+		System.out.println("5-Show all of the Customer ;");
+		System.out.println();
+		System.out.println("Enter your decision: ");
+		input=scan.nextInt();
+		System.out.println();
+		switch(input)
+		{
+		case 0 :
+		{
+			control=false;
+			System.out.println("Program is finished!");
+			break;
+		}
+		case 1 :
+		{
+			list.addCustomer();
+			break;
+		}
+		case 2 :
+		{
+			list.deleteCustomer();
+			break;
+		}
+		case 3 :
+		{
+			list.updateCustomer();
+			break;
+		}
+		case 4 :
+		{
+			list.findCustomer();;
+			break;
+		}
+		
+		case 5 : 
+		{
+			list.showtheCustomers();;
+			break;
+		}
+		default:
+		{
+			System.out.println("Your decision is invalid please choose valid decision!");
+			break;
+		}
+	}
+	
+	}
+	}
+}
