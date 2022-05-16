@@ -1,0 +1,208 @@
+import java.util.Scanner;
+
+public class CustomerList {
+
+	Scanner scan=new Scanner(System.in);
+	CustomerNode head=null;
+	CustomerNode tail=null;
+	
+	int id;
+	String name;
+	String surname;
+	String phoneNumber;
+	String adress;
+	String product;
+	
+	public void addCustomer()
+	{
+		System.out.println("******************************************");
+		System.out.println("Enter the informations of customer:");
+		System.out.println("Id          : "); id=scan.nextInt(); scan.nextLine();
+		System.out.println("Name        : "); name=scan.nextLine();
+		System.out.println("Surname     : "); surname=scan.nextLine();
+		System.out.println("Phone Number: "); phoneNumber=scan.nextLine();
+		System.out.println("Adress      : ");    adress=scan.nextLine();
+		System.out.println("Product     : ");   product=scan.nextLine();
+				
+		
+		
+		CustomerNode element=new CustomerNode(id,name,surname,phoneNumber,adress,product);
+		if(head==null)
+		{
+		   head=element;
+		   tail=element;
+		   System.out.println("The Customer List created and the first customer added successfully!");
+		}
+		else
+		{
+			element.next=head;
+			head.prev=element;
+			head=element;
+			System.out.println("The customer with "+id +" Id is added succesfully!");
+		}
+	}
+	
+	public void deleteCustomer()
+	{
+		if(head==null)
+		{
+			System.out.println("Theere is no node to delete in the Customer List!");
+		}
+		else
+		{
+			System.out.println("Enter the id of customer that you want to delete: ");
+			id=scan.nextInt();
+			boolean result=false;
+			if(head.next==null && head.id==id)
+			{
+				head=null;
+				tail=null;
+				System.out.println("The customer with "+id +" Id is deleted succesfully!");
+				result=true;
+			}
+			else if(head.next!=null && head.id==id)
+			{
+				head=head.next;
+				head.prev=null;
+				System.out.println("The customer with "+id +" Id is deleted succesfully!");
+				result=true;
+			}
+			else if(tail.id==id)
+			{
+				tail=tail.prev;
+				tail.next=null;
+				System.out.println("The customer with "+id +" Id is deleted succesfully!");
+				result=true;
+			}
+			else
+			{
+				CustomerNode temp=head;
+				while(temp!=null)
+				{
+					if(temp.id==id)
+					{
+						temp.prev.next=temp.next;
+						temp.next.prev=temp.prev;
+						temp.next=null;
+						temp.prev=null;
+						System.out.println("The customer with "+id +" Id is deleted succesfully!");
+						result=true;
+						break;
+					}
+					temp=temp.next;
+				}
+					if(result==false)
+					{
+						System.out.println("You used invalid ID please use an valid ID!! ");
+					}
+			}
+		}
+	}
+
+	public void updateCustomer()
+	{
+		 boolean result=false;
+		if(head==null)
+		{
+			System.out.println("Theere is no node to delete in the Customer List!");
+		}
+			else
+			{
+				System.out.println("Enter the id of customer who will be update: ");
+				id=scan.nextInt(); scan.nextLine();
+				CustomerNode temp=head;
+				while(temp!=null)
+				{
+					if(temp.id==id)
+					{ 
+						System.out.println("The customer with "+id+"Id informations:");
+						System.out.println("Name: "+temp.id);
+						System.out.println("Name: "+temp.name);
+						System.out.println("Name: "+temp.surname);
+						System.out.println("Name: "+temp.adress);
+						System.out.println("Name: "+temp.phoneNumber);
+						System.out.println("Name: "+temp.product);
+						System.out.println();
+						System.out.println("Update the new product information: ");
+						 temp.product=scan.nextLine();
+						System.out.println("The customer Id is updated succesfully!");
+						System.out.println("The new Id is "+id);
+						result=true;
+						break;
+					}
+					temp=temp.next;
+				}
+					if(result==false)
+					{
+						System.out.println("You used invalid ID please use an valid ID!! ");
+					}
+			}
+		}
+
+	public void findCustomer()
+	{
+		 boolean result=false;
+		if(head==null)
+		{
+			System.out.println("Theere is no node to delete in the Customer List!");
+		}
+			else
+			{
+				System.out.println("Enter the id of customer who are you looking for: ");
+				id=scan.nextInt(); scan.nextLine();
+				CustomerNode temp=head;
+				while(temp!=null)
+				{
+					if(temp.id==id)
+					{ 
+						System.out.println("The customer with "+id+"Id informations:");
+						System.out.println("Name: "+temp.id);
+						System.out.println("Name: "+temp.name);
+						System.out.println("Name: "+temp.surname);
+						System.out.println("Name: "+temp.adress);
+						System.out.println("Name: "+temp.phoneNumber);
+						System.out.println("Name: "+temp.product);
+						result=true;
+						break;
+					}
+					temp=temp.next;
+				}
+					if(result==false)
+					{
+						System.out.println("You used invalid ID please use an valid ID!! ");
+					}
+			}
+		}
+	
+	public void showtheCustomers()
+	{
+		 boolean result=false;
+		if(head==null)
+		{
+			System.out.println("Theere is no node to delete in the Customer List!");
+		}
+			else
+			{
+				CustomerNode temp=head;
+				while(temp!=null)
+				{
+		
+						System.out.println("The customer with "+id+"Id informations:");
+						System.out.println("Name: "+temp.id);
+						System.out.println("Name: "+temp.name);
+						System.out.println("Name: "+temp.surname);
+						System.out.println("Name: "+temp.adress);
+						System.out.println("Name: "+temp.phoneNumber);
+						System.out.println("Name: "+temp.product);
+						result=true;
+						temp=temp.next;
+				}
+					if(result==false)
+					{
+						System.out.println("You used invalid ID please use an valid ID!! ");
+					}
+			}
+		}
+
+	
+}
