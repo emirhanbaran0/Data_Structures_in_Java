@@ -1,0 +1,14 @@
+package DoublyLinkedList;
+
+public class NodeClass {
+	
+	int data;
+	NodeClass next;
+	NodeClass prev;
+	
+	NodeClass(int data)
+	{
+		this.data=data;
+	}
+
+}

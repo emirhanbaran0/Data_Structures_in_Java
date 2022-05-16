@@ -1,0 +1,16 @@
+package DoublyLinkedList;
+
+public class main {
+
+	public static void main(String[] args) {
+		
+		ListStructure list=new ListStructure();
+		list.addHead(15);
+		list.addHead(20);
+		list.addTail(30);
+		list.showList();
+		System.out.println();
+		list.showListReverse();
+
+	}
+}
