@@ -1,0 +1,25 @@
+
+public class CustomerNode {
+
+	int id;
+	String name;
+	String surname;
+	String phoneNumber;
+	String adress;
+	String product; 
+	CustomerNode next;
+	CustomerNode prev;
+	
+	public CustomerNode(int id, String name, String surname, String phoneNumber, String adress,String product) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.phoneNumber = phoneNumber;
+		this.adress = adress;
+		next=null;
+		prev=null;
+	}
+	
+	
+}
