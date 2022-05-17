@@ -1,0 +1,13 @@
+package CircularLinkedLists;
+
+public class NodeClass {
+	
+	int data;
+	NodeClass next;
+
+	NodeClass(int data)
+	{
+		this.data=data;
+		next=null;
+	}
+}
