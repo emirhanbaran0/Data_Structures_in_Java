@@ -1,0 +1,227 @@
+package CircularLinkedLists;
+
+import java.util.Scanner;
+
+public class ListStructure {
+
+	NodeClass head=null;
+	NodeClass tail=null;
+	
+	Scanner scan=new Scanner(System.in);
+	int data,index;
+	
+	public void addHead()
+	{
+		System.out.println("Data: ");
+		data=scan.nextInt();
+				
+		NodeClass element=new NodeClass(data);
+		
+		if(head==null)
+		{
+			head=element;
+			tail=element;
+			System.out.println("The Circular Linked List created succesfully!");
+		}
+		else
+		{
+			element.next=head;
+			head=element;
+			tail.next=head;
+			System.out.println("Head is added into the list successfully!");
+		}
+	}
+	
+	public void addTail()
+	{
+		System.out.println("Data: ");
+		data=scan.nextInt();
+				
+		NodeClass element=new NodeClass(data);
+		
+		if(head==null)
+		{
+			head=element;
+			tail=element;
+			System.out.println("The Circular Linked List created succesfully!");
+		}
+		else
+		{
+			tail.next=element;
+			element.next=head;
+			tail=element;
+			System.out.println("Tail   is added into the list successfully!");
+		}
+	}
+	
+	public void addNode()
+	{
+		System.out.println("Data: ");
+		data=scan.nextInt();
+		scan.nextLine();
+		System.out.println("Index: ");
+		index=scan.nextInt();
+		scan.nextLine();
+		NodeClass element=new NodeClass(data);
+		
+		if(head==null)
+		{
+			head=element;
+			tail=element;
+			System.out.println("The Circular Linked List created succesfully!");
+		}
+		else if(index==0 && head!=null)
+		{
+			element.next=head;
+			head=element;
+			tail.next=head;
+			System.out.println("Head is added into the list successfully!");
+		}
+		else
+		{
+			NodeClass temp=head;
+			NodeClass temp2=head;
+			int n=0;  //it will store the number of nodes.
+			while(temp!=null)
+			{
+				n++;
+				temp.next=temp;
+			}
+			if(n<=index)
+			{
+				tail.next=element;
+				element.next=head;
+				tail=element;
+				System.out.println("Tail   is added into the list successfully!");
+			}
+			else {
+				temp=head;
+				int i=0;
+				while(i<index)
+				{
+					i++;
+					temp2=temp;
+					temp=temp.next;
+				}
+				temp2.next=element;
+				element.next=temp;
+				System.out.println("Node is added into the list successfully!");
+			}
+		}
+
+	}
+	
+	public void deleteHead()
+	{
+		if(head==null)
+		{
+			System.out.println("There is no node to delete in the list!");
+		}
+		else if(head==tail)
+		{
+			head=null;
+			tail=null;
+			System.out.println("The last node is deleted successfully!");
+		}
+		else
+		{
+			tail.next=head.next;
+			head=head.next;
+			System.out.println("The head is deleted successfully!");
+		}
+	}
+	
+	public void deleteTail()
+	{
+		if(head==null)
+		{
+			System.out.println("There is no node to delete in the list!");
+		}
+		else if(head==tail)
+		{
+			head=null;
+			tail=null;
+			System.out.println("The last node is deleted successfully!");
+		}
+		else
+		{
+			int n=0;
+			NodeClass temp=head;
+			while(temp.next!=tail)
+			{
+				temp=temp.next;
+			}
+			temp.next=head;
+			tail=temp;
+			System.out.println("The tail is deleted successfully!");
+		}
+	}
+	
+	public void deleteNode()
+	{
+		
+		if(head==null)
+		{
+			System.out.println("There is no node to delete in the list!");
+		}
+		else if(head==tail)
+		{
+			head=null;
+			tail=null;
+			System.out.println("The last node is deleted successfully!");
+		}
+		else
+		{
+			System.out.println("Index of node that you will delete: ");
+			index=scan.nextInt();
+			scan.nextLine();
+			int n=0;
+			NodeClass temp=head;
+			NodeClass temp2=head;
+			while(temp.next!=head)
+			{
+				n++;
+				temp=temp.next;
+			}
+			if(n>=index)
+			{
+				temp.next=head;
+				tail=temp;
+				System.out.println("The tail is deleted successfully!");
+			}
+			else
+			{
+				int i=0;
+				while(i<=index)
+				{
+					temp2=temp;
+					temp=temp.next;
+					i++;
+				}
+				temp2.next=temp.next;
+				System.out.println("The node is deleted successfully!");
+			}
+		}
+	}
+	
+	public void showList()
+	{
+		NodeClass temp=head;
+		if(head==null)
+		{
+			System.out.println("The list is not created yet!");
+		}
+		else
+		{
+			System.out.print("Start ->");
+			while(temp!=tail)
+			{
+				System.out.print(temp.data+" -> ");
+				temp=temp.next;
+			}
+			System.out.println(tail.data+" -> End");
+		}
+	
+	}
+
+}
