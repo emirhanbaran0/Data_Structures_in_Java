@@ -1,0 +1,26 @@
+
+public class AutoNode {
+	String id;
+	String brand;
+	String model;
+	String colour;
+	int purchasePrice;
+	int salePrice;
+	String explanation;
+	
+	AutoNode next;
+
+	public AutoNode(String id, String brand, String model, String colour, int purchasePrice, String explanation) {
+		super();
+		this.id = id;
+		this.brand = brand;
+		this.model = model;
+		this.colour = colour;
+		this.purchasePrice = purchasePrice;
+		this.salePrice=this.purchasePrice*12/10;
+		this.explanation = explanation;
+		this.next = null;
+	}
+	
+	
+}
