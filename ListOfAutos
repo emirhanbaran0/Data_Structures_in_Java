@@ -1,0 +1,147 @@
+import java.util.Scanner;
+
+public class ListStructure {
+
+	AutoNode head = null;
+	AutoNode tail = null;
+
+	Scanner scan = new Scanner(System.in);
+
+	String id;
+	String brand;
+	String model;
+	String colour;
+	int purchasePrice;
+	int salePrice;
+	String explanation;
+
+	public void addAuto() {
+
+		System.out.println("Enter the information of auto that you will add:");
+		System.out.println("Id: ");
+		id = scan.nextLine();
+		System.out.println("Brand: ");
+		brand = scan.nextLine();
+		System.out.println("Model: ");
+		model = scan.nextLine();
+		System.out.println("Colour: ");
+		colour = scan.nextLine();
+		System.out.println("Puchase price: ");
+		purchasePrice = scan.nextInt();
+		scan.nextLine();
+		System.out.println("Explanation: ");
+		explanation = scan.nextLine();
+
+		AutoNode element = new AutoNode(id, brand, model, colour, purchasePrice, explanation);
+		if (head == null) {
+			head = element;
+			tail = element;
+			tail.next = head;
+			System.out.println("The List of AUTO created successfully and the first auto added into the list!");
+		} else {
+			element.next = head;
+			head = element;
+			System.out.println("The auto added successfully!");
+		}
+	}
+
+	public void deleteAuto() {
+		if (head == null) {
+			System.out.println("There is no auto to delete in the List of Auto!");
+		} else {
+			System.out.println("Enter the Id of number that you will delete:");
+			id = scan.nextLine();
+
+			if (head == tail && id.equals(head.id)) {
+				System.out.println("All of the autos saled " + head.salePrice + "$ succesfuly!");
+				head = null;
+				tail = null;
+			} else if (head != tail && id.equals(head.id)) {
+				System.out.println("The auto with " + id + " ID saled " + head.salePrice + "$ succesfuly!");
+				tail.next = head.next;
+				head.next = head;
+			} else {
+				AutoNode temp = head;
+				AutoNode temp2 = head;
+				while (temp != tail) {
+					if (temp.id.equals(id)) {
+						System.out.println("The auto with " + id + " ID saled " + temp.salePrice + "$ succesfuly!");
+						temp2.next = temp.next;
+					}
+					temp2 = temp;
+					temp = temp.next;
+				}
+				if (temp.id.equals(id)) {
+					System.out.println("The auto with " + id + " ID saled " + temp.salePrice + "$ succesfuly!");
+					tail = temp2;
+					tail.next = head;
+				}
+			}
+		}
+
+	}
+
+	public void showList()
+	{
+		if(head==null)
+		{
+			System.out.println("There is no node in the Auto List!");
+		}
+		else
+		{
+			System.out.println("Id\tBrand\tModel\tColour\tPurchase Price\tSale Price\tExplanation\t");
+		
+			AutoNode temp=head;
+			while (temp!=tail)
+			{
+				System.out.println(temp.id+ "\t"+temp.brand+ "\t"+temp.model+ "\t"+temp.colour+ "\t"+temp.purchasePrice+ "\t"+temp.salePrice+ "\t"+temp.explanation+ "\t");
+				temp=temp.next;
+			}
+			System.out.println(temp.id+ "\t"+temp.brand+ "\t"+temp.model+ "\t"+temp.colour+ "\t"+temp.purchasePrice+ "\t"+temp.salePrice+ "\t"+temp.explanation+ "\t");
+		}
+	}
+
+	public void findAuto()
+	{
+		if(head==null)
+		{
+			System.out.println("There is no Auto in the list!");
+		}
+		else
+		{
+			boolean result=false;
+			System.out.println("Enter the id of auto that you will find: ");
+			id=scan.nextLine();
+			AutoNode temp=head;
+			AutoNode temp2=head;
+			while(temp!=tail)
+			{
+				if(temp.id.equals(id))
+				{
+					temp2=temp;
+					result=true;
+				}
+				temp=temp.next;
+			}
+			if(temp.id.equals(id))
+			{
+				temp2=temp;
+				result=true;
+			}
+			temp=temp.next;
+			if(result==false)
+			{
+				System.out.println("There is no node with "+ id+" Id");
+			}
+			else {
+				System.out.println("The information of auto with "+ id +" Id");
+				System.out.println("Brand: "+ temp.brand);
+				System.out.println("Model: "+ temp.model);
+				System.out.println("Colour: "+ temp.colour);
+				System.out.println("Purchase Price: "+ temp.purchasePrice);
+				System.out.println("Sale Price: "+ temp.salePrice);
+				System.out.println("Explanation: "+ temp.explanation);				
+			}
+		}
+	}
+}
