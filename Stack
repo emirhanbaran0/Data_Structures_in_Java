@@ -1,0 +1,63 @@
+package Stack;
+
+public class Stack {
+
+	int dizi[];  //Stack; 
+	int size;
+	int indis=-1;
+	
+	Stack(int size)
+	{
+		this.size=size;
+		dizi=new int[size];
+		indis=-1;
+	}
+	
+	void push(int data)
+	{
+		if(isFull())
+		{
+			System.out.println("Array is Full!");
+		}
+		else
+		{
+			indis++;
+			dizi[indis]=data;
+			System.out.println("push(): "+dizi[indis]);
+		}
+		
+	}
+	
+	int pop()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Array is Empty!");
+			return -1;
+		}
+		else
+		{
+			
+			System.out.println("pop(): "+dizi[indis--]);
+			return dizi[indis--];
+		}
+		
+	}
+	
+	boolean isEmpty()
+	{
+		if(indis==-1)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+	boolean isFull()
+	{
+		if(indis+1==size)
+			return true;
+		else
+		return false;
+	}
+}
