@@ -1,0 +1,248 @@
+package CircularDoublyList;
+
+import java.util.Scanner;
+
+public class ListStructure {
+
+	Scanner scan = new Scanner(System.in);
+	int data, index;
+	Node head = null;
+	Node tail = null;
+
+	public void addHead() {
+		System.out.println("Add the data of element that you will add: ");
+		data = scan.nextInt();
+		scan.nextLine();
+		Node element = new Node(data);
+		if (head == null) {
+			head = element;
+			head.next = tail;
+			tail = element;
+			tail.next = head;
+			head.prev = tail;
+			tail.prev = head;
+			System.out.println("The Doubly Circular list is created succesfully!");
+		} else {
+			element.next = head;
+			head.prev = element;
+			head = element;
+			tail.next = head;
+			head.prev = tail;
+			System.out.println("The head is added successfully!");
+		}
+	}
+
+	public void addTail() {
+		System.out.println("Add the data of element that you will add: ");
+		data = scan.nextInt();
+		scan.nextLine();
+		Node element = new Node(data);
+		if (tail == null) {
+			head = element;
+			head.next = tail;
+			tail = element;
+			tail.next = head;
+			head.prev = tail;
+			tail.prev = head;
+			System.out.println("The Doubly Circular list is created succesfully!");
+		} else {
+			element.next = head;
+			head.prev = element;
+			tail.next = element;
+			element.prev = tail;
+			tail = element;
+			System.out.println("The tail is added successfully!");
+		}
+	}
+
+	public void addNode() {
+		System.out.println("Enter the index: ");
+		index = scan.nextInt();
+		scan.nextLine();
+		System.out.println("Add the data of element that you will add: ");
+		data = scan.nextInt();
+		scan.nextLine();
+		Node element = new Node(data);
+		if (head == null) {
+			head = element;
+			head.next = tail;
+			tail = element;
+			tail.next = head;
+			head.prev = tail;
+			tail.prev = head;
+			System.out.println("The Doubly Circular list is created succesfully!");
+		} else if (head != null && index == 0) {
+			element.next = head;
+			head.prev = element;
+			head = element;
+			tail.next = head;
+			head.prev = tail;
+			System.out.println("The node is added successfully!");
+		} else {
+			int n = 0; // the number of index
+			Node temp = head;
+			Node temp2 = head;
+			while (temp.next != head) {
+				n++;
+				temp = temp.next;
+			}
+			temp = head;
+			if (n < index) {
+				element.next = head;
+				head.prev = element;
+				tail.next = element;
+				element.prev = tail;
+				tail = element;
+				System.out.println("The node is added successfully!");
+			} else {
+				for (int i = 0; i < index; i++) {
+					temp2 = temp;
+					temp = temp.next;
+				}
+				temp2.next = element;
+				element.prev = temp2;
+				temp.prev = element;
+				element.next = temp;
+				System.out.println("The node added successfully!");
+			}
+		}
+	}
+
+	public void deleteHead()
+	{
+		if(head==null)
+		{
+			System.out.println("There is no node in the list!");
+		}
+		else if(head==tail)
+		{
+			head=null;
+			tail=null;
+			System.out.println("The list is deleted successfully");
+		}
+		else
+		{
+			tail.next=head.next;
+			head.next.prev=tail;
+			head=head.next;
+			System.out.println("The head is deleted successfully");
+		}
+	}
+
+	public void deleteTail()
+	{
+		if(tail==null)
+		{
+			System.out.println("There is no node in the list!");
+		}
+		else if(head==tail)
+		{
+			head=null;
+			tail=null;
+			System.out.println("The list is deleted successfully");
+		}
+		else
+		{
+			head.prev=tail.prev;
+			tail.prev.next=head;
+			tail=tail.prev;
+			System.out.println("The tail is deleted successfully");
+		}
+	}
+
+	public void deleteNode()
+	{
+		
+		if(head==null)
+		{
+			System.out.println("There is no node to delete in the list!");
+		}
+		else if(head==tail)
+		{
+			head=null;
+			tail=null;
+			System.out.println("The list is deleted successfully!");			
+		}
+		else
+		{
+			System.out.println("Enter the index of node you want to delete: ");
+			index=scan.nextInt();
+			if(index==0)
+			{
+				tail.next=head.next;
+				head.next.prev=tail;
+				head=head.next;
+				System.out.println("The node is deleted successfully");
+			}
+			int n=0; //number of nodes			
+			Node temp=head;
+			Node temp2=head;
+			while(temp.next!=head)
+			{
+				n++;
+				temp=temp.next;
+			}
+			if(n<=index)
+			{
+				tail.prev=head;
+				tail.prev.next=head;
+				tail=tail.prev;
+				System.out.println("The node is deleted successfully");
+			}
+			else
+			{
+				temp=head;
+				for(int i=0;i<index;i++)
+				{
+					temp2=temp;
+					temp=temp.next;
+				}
+				temp2.next=temp.next;
+				temp.next.prev=temp2;
+				System.out.println("The node is deleted successfully!");
+			}
+			
+		}
+		
+	}
+	
+	public void showtheList()
+	{
+		if(head==null)
+		{
+			System.out.println("The list is not created yet!");
+		}
+		else
+		{
+			Node temp=head;
+			System.out.print("Head ->");
+			while(temp.next!=head)
+			{
+				System.out.print(temp.data+ " -> ");
+				temp=temp.next;
+			}
+			System.out.println(tail.data+" -> Tail");
+				
+		}
+	}
+	
+	public void showListReverse()
+	{
+		if(head==null)
+		{
+			System.out.println("The list is not created yet!");
+		}
+		else
+		{
+			Node temp=tail;
+			System.out.print("Tail ->");
+			while(temp.prev!=tail)
+			{
+				System.out.print(temp.data+ " -> ");
+				temp=temp.next;
+			}
+			System.out.println(head.data+" -> Head");
+				
+		}
+	}
+}
