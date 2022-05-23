@@ -1,0 +1,152 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+public class CarListStructure {
+
+	CarNode head=null;
+	CarNode tail=null;
+	CarNode temp=head;
+	CarNode temp2=temp;
+	Scanner scan=new Scanner(System.in);
+	
+	String id;
+	String entringTime;
+	String leavingTime;
+	long minute;
+	double payment;
+	
+	static double overallCharge=0;
+	
+	public void addCar()
+	{
+		System.out.print("Enter the id of car: ");
+		id=scan.nextLine();
+		System.out.print("Entering time(hour:minute) : ");
+		entringTime=scan.nextLine();
+		
+		CarNode car=new CarNode(id,entringTime);
+		
+		if(head==null)
+		{
+			head=car;
+			tail=car;
+			head.next=tail;
+			head.prev=tail;
+			tail.next=head;
+			tail.prev=head;
+			System.out.println("The car is entered the CarPark in first order!");
+		}
+		else
+		{
+			car.next=head;
+			head.prev=car;
+			car.prev=tail;
+			tail.next=car;
+			System.out.println("The car is entered the CarPark in first order!");
+		}
+		
+	}
+	
+	public void leaveCar() throws ParseException
+	{
+		if(head==null)
+		{
+			System.out.println("There is no car in the CarPark");
+		}
+		else
+		{
+			System.out.print("Enter the id of car: ");
+			id=scan.nextLine();
+			System.out.print("Leaving time(hour:minute) : ");
+			leavingTime=scan.nextLine();
+			
+			if(head==tail && head.id.equals(id))
+			{
+				calculatePayment(head);
+				head=null;
+				tail=null;
+				System.out.println("The car is left from the park!");
+			}
+			
+			else if(head!=tail && head.id.equals(id))
+			{
+				calculatePayment(head);
+				head=head.next;
+				head.prev=tail;
+				tail.next=head;
+				System.out.println("The car is left from the park!");
+			}
+			else
+			{
+				temp=head;
+				
+				while(temp!=tail)
+				{
+					if(temp.id.equals(id))
+					{
+						calculatePayment(temp);
+						temp2.next=temp.next;
+						temp.next.prev=temp2;
+						System.out.println("The car is left from the park!");
+					}			
+					temp2=temp;
+					temp=temp.next;
+				}
+				if(temp.id.equals(id))
+				{
+					calculatePayment(temp);
+					tail=temp2;
+					tail.next=head;
+					head.prev=tail;
+					System.out.println("The car is left from the park!");
+				}
+			}
+		}
+	}
+
+	public void calculatePayment(CarNode xCar) throws ParseException {
+		
+		entringTime=xCar.entringTime;
+		leavingTime=xCar.leavingTime;
+		SimpleDateFormat sdf=new SimpleDateFormat("HH:mm");
+		Date d1=new Date(entringTime);
+		Date d2=new Date(leavingTime);
+		d1=sdf.parse(entringTime);
+		d2=sdf.parse(leavingTime);
+		
+		minute=d2.getTime()-d1.getTime(); //we will calculete the staying time in split second 
+		minute%=60000;   // we recover split second to the minute
+		payment=minute*0.5;
+		System.out.println("Staying Time: "+ minute+ " minutes");
+		System.out.println("Payment: "+ payment+ "$");
+		overallCharge+=payment;
+		
+	}
+
+	public double getOverallCharge()
+	{
+		return overallCharge;
+	}
+	
+	public void showCars()
+	{
+		if(head==null)
+		{
+			System.out.println("The Carpark is empty now!");
+		}
+		else
+		{
+			temp=head;
+			System.out.print("Head -> ");
+			while(temp.next!=head)
+			{
+				System.out.print(temp.id+ " -> ");
+				temp=temp.next;
+			}
+			System.out.print(tail.id+" -> Tail");
+		}
+	}
+	
+}
