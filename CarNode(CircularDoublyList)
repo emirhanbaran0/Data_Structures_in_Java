@@ -1,0 +1,21 @@
+
+public class CarNode {
+
+	String id;
+	String entringTime;
+	String leavingTime;
+	long minute;
+	double payment;
+	
+	CarNode next;
+	CarNode prev;
+	public CarNode(String id, String entringTime) {
+		super();
+		this.id = id;
+		this.entringTime = entringTime;
+		this.next=null;
+		this.prev=null;
+	}
+	
+	
+}
