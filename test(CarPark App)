@@ -1,0 +1,40 @@
+import java.text.ParseException;
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) throws ParseException {
+		ArabaListStructure  list=new ArabaListStructure();
+		int decision=-1;
+		Scanner scan=new Scanner(System.in);
+		while(decision!=0)
+		{
+			System.out.println("0-Exit");
+			System.out.println("1-Enter the CarPark");
+			System.out.println("2-Leave from CarPark");
+			System.out.println("3-Show the cars in Carpark");
+			System.out.println("4-Overall Charge");
+			
+			decision=scan.nextInt();
+			switch(decision)
+			{
+			case 0:
+				System.exit(0);
+			case 1:
+				list.addCar();
+				break;
+			case 2:
+				list.leaveCar();
+				break;
+			case 3:
+				list.showCars();
+				break;
+			case 4:
+				list.getOverallCharge();
+				break;
+			}
+		}
+
+	}
+
+}
