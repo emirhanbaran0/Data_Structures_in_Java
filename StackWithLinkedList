@@ -1,0 +1,112 @@
+package Stack;
+
+public class StackWithLinkedList {
+
+	int size;
+	int counter;
+	NodesOfStack top;   //tap is equal to head in the Linkedlists.
+	
+	StackWithLinkedList(int size)
+	{
+		this.size=size;
+		counter=0;
+	}
+	
+	public void pop()
+	{
+		if(isEmpty())
+		{
+			System.out.println("There is no node to delete in the Stack!");
+		}
+		else
+		{
+			if(top.next==null)
+			{
+				top=null;
+				System.out.println("The Stack is deleted successfully!");
+			}
+			else
+			{
+				top=top.next;
+				System.out.println("The Element is Deleted Successfully!");
+			}
+			counter--;
+		}
+	}
+	
+	public void push(int data)
+	{
+		if(!isFull())
+		{
+			NodesOfStack element=new NodesOfStack(data);
+			if(isEmpty())
+			{
+				top=element;
+				System.out.println("The Stack is created Successfully!");
+			}
+			else
+			{
+				element.next=top;
+				top=element;
+				System.out.println("The element is added successfully into the stack!");
+			}
+			counter++;
+		}
+		else
+		{
+			System.out.println("The List is Full!");
+		}
+		
+	}
+	
+	public boolean isEmpty()
+	{
+		if(counter==-1)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isFull()
+	{
+		if(counter==size)
+		return true;
+		else
+			return false;
+	}
+	
+	public void showtheStack()
+	{
+		if(isEmpty())
+		{
+			System.out.println("The List is Empty!");
+		}
+		else
+		{
+			NodesOfStack temp=top;
+			System.out.print("Top -> ");
+			while(top.next!=null)
+			{
+				System.out.print(temp.data+" -> ");
+			}
+			System.out.print(temp.data);  //For the last element 
+		}
+	}
+	public void showtheTop()
+	{
+		if(isEmpty())
+		{
+			System.out.println("The List is Empty!");
+		}
+		else
+		{
+			System.out.println("Top: "+top.data);
+		}
+	}
+	
+	public void NumberOfNodes()
+	{
+		System.out.println("Number of Node in the stack is "+counter+".");
+	}
+	
+}
