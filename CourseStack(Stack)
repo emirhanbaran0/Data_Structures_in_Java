@@ -1,0 +1,114 @@
+import java.util.Scanner;
+
+public class CourseStack {
+
+	int capacity;
+	int counter=0;
+	
+	Scanner scan=new Scanner(System.in);
+	
+	String id;
+	String firstName;
+	String surname;
+	String graduateDepartment;
+	CourseNode next;
+	
+	CourseNode top;
+	
+	CourseStack(int capacity)
+	{
+		this.capacity=capacity;
+		top=null;
+	}
+	
+	void addPerson()  //Push 
+	{
+		if(!isFull())
+		{
+			System.out.println("The Information of the Person: ");
+			System.out.println("ID: "); id=scan.nextLine();
+			System.out.println("Name: "); firstName=scan.nextLine();
+			System.out.println("Surname: "); surname=scan.nextLine();
+			System.out.println("Graduate Department: ");  graduateDepartment=scan.nextLine();
+			CourseNode element=new CourseNode(id,firstName,surname,graduateDepartment);
+			if(top==null)
+			{
+				top=element;
+				System.out.println("The Course Stack is created and the first person added successfully!");
+			}
+			else
+			{
+				element.next=top;
+				top=element;
+				System.out.println("The Person added into the list successfully!");
+			}
+			counter++;
+		}
+		else
+		{
+			System.out.println("The Course is Full!");
+		}
+		
+	}
+	
+	public void deletePerson()   //Pop
+	{
+		if(!isEmpty())
+		{
+			top=top.next;
+			System.out.println("The Person with "+top.id+" is deleted successfully.");
+			counter--;
+		}
+		else
+		{
+			System.out.println("The Stack is Empty!");
+		}
+	}
+	
+	public void showPeople()
+	{
+		if(!isEmpty())
+		{
+			CourseNode temp=top;
+			System.out.println("-------------The Course List---------------");
+			while(temp!=null)
+			{
+				System.out.println("ID: " +temp.id);
+				System.out.println("Name: "+ temp.firstName);
+				System.out.println("Surname: " +temp.surname);
+				System.out.println("Surname: " +temp.surname);
+				System.out.println("Graduate Department: "+temp.graduateDepartmant);
+				temp=temp.next;
+				System.out.println("************************************************");
+			}
+		}
+		else
+		{
+			System.out.println("The Course is Empty!");
+		}
+	}
+	
+	public void remainingCapacity()
+	{
+		System.out.println("Remaining capacity :  "+ (capacity-counter));
+		System.out.println("Registered Person Number: "+capacity);
+	}
+	
+	public boolean isFull() {
+		if(counter==capacity)
+		return true;
+		else {
+			return false;
+		}
+			
+	}
+	
+	public boolean isEmpty() {
+		if(counter==0)
+		return true;
+		else {
+			return false;
+		}
+			
+	}
+}
