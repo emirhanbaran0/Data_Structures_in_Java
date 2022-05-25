@@ -1,0 +1,12 @@
+package Stack;
+
+public class NodesOfStack {
+
+	int data;
+	NodesOfStack next;
+	
+	NodesOfStack(int data)
+	{
+		this.data=data;
+	}
+}
