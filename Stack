@@ -39,7 +39,7 @@ public class Stack {
 		{
 			
 			System.out.println("pop(): "+dizi[indis]);
-			return dizi[--indis];
+			return dizi[indis--];
 		}
 		
 	}
