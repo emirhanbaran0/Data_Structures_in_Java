@@ -38,8 +38,8 @@ public class Stack {
 		else
 		{
 			
-			System.out.println("pop(): "+dizi[indis--]);
-			return dizi[indis--];
+			System.out.println("pop(): "+dizi[indis]);
+			return dizi[--indis];
 		}
 		
 	}
