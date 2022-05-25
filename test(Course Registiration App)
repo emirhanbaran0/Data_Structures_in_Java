@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		
+		Scanner scan=new Scanner(System.in);
+		int capacity,decision=-1;
+		System.out.println("Enter the capacity of Course: ");
+		capacity=scan.nextInt();
+		CourseStack course=new CourseStack(capacity);
+		
+		while(decision!=0)
+		{
+			System.out.println("0-Exit");
+			System.out.println("1-Add Person into the Course ");
+			System.out.println("2-Delete Person from the Course");
+			System.out.println("3-Show the CourseList");
+			System.out.println("4-Is the Course Empty?");
+			System.out.println("5-Is the Course Full?");
+			System.out.println("6-Remaining Capacity");
+			System.out.println("Decision: "); decision=scan.nextInt();
+			
+			switch(decision)
+			{
+			case 0:
+				return; 
+			case 1: 
+				course.addPerson();
+				break;
+			case 2: 
+				course.deletePerson();
+				break;
+			case 3: 
+				course.showPeople();
+				break;
+			case 4: 
+				course.isEmpty();
+				break;
+			case 5: 
+				course.isFull();
+				break;
+			case 6: 
+				course.remainingCapacity();
+				break;
+			default:
+				System.out.println("Your choice is invalid.Plesase choose an valid decision!");
+				break;
+			}
+			
+		}
+		
+		
+	}
