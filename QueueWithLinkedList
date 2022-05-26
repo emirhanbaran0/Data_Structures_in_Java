@@ -1,0 +1,89 @@
+package Queue;
+
+import java.util.Scanner;
+
+public class QueueWithLinkedList {
+	
+	
+	Node rear;
+	Node front;
+	
+	int counter;
+	int size;
+	
+	QueueWithLinkedList(int size)
+	{
+		this.size=size;
+		counter=0;
+		front=null;
+		rear=null;
+	}
+	
+	public void enQueue()
+	{
+		if(isFull())
+		{
+			System.out.println("The queue is full!");
+		}
+		else
+		{
+			int data;
+			Scanner scan=new Scanner(System.in);
+			data=scan.nextInt();
+			Node element=new Node(data);
+			if(isEmpty())
+			{
+				front=rear=element;		
+			}
+			else
+			{
+				rear.next=element;
+				rear=element;
+			}
+			System.out.println("The element is added into the Queue!");
+			counter++;
+		}
+	}
+	
+	public void deQueue()
+	{
+		if(isEmpty())
+		{
+			System.out.println("There is no element in the list to delete!");
+		}
+		else
+		{
+			int number=front.data;
+			front=front.next;
+			System.out.println("The Element with "+number+" is deleted successfully!");
+			counter--;
+		}
+	}
+	public void showQueue()
+	{
+		if(isEmpty())
+		{
+			System.out.println("The list is Empty!");
+		}
+		else
+		{
+			Node temp=front;
+			System.out.print("Front <- ");
+			while(temp!=null)
+			{
+				System.out.print(temp.data+" <- ");
+				temp=temp.next;
+			}
+			System.out.println("Rear");
+		}
+	}
+	public boolean isEmpty()
+	{
+		return counter==0;
+	}
+	public boolean isFull()
+	{
+		return size==counter;
+	}
+	
+}
