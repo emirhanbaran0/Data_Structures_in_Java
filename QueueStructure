@@ -1,0 +1,77 @@
+package Queue;
+
+public class QueueStructure {
+
+	int[] array;
+	int size;
+	int front;
+	int rear;
+	
+	QueueStructure(int size)
+	{
+		this.size=size;
+		array=new int[size];
+		front=0;
+		rear=-1;
+	}
+	
+	public void enQueue(int data)
+	{
+		if(isFull())
+		{
+			System.out.println("The Queue is Full!");
+		}
+		else {
+			rear++;
+			array[rear]=data;
+			System.out.println("The Element is added into the Queue");
+		}
+		
+	}
+	
+
+	public void deQueue()
+	{
+		if(isEmpty())
+		{
+			System.out.println("The Queue is Empty");
+		}
+		else
+		{
+			int number=array[front];
+			
+			for(int i=1;i<=rear;i++)
+			{
+				array[i-1]=array[i];
+			}
+			rear--;
+			System.out.println("The element with data "+number +" is deleted successfully!");
+		}
+	}
+
+	public boolean isEmpty() {
+		
+		return rear==-1;
+	}
+	
+   public boolean isFull() {
+		
+		return rear==size-1;
+	}
+   public void numberofElement()
+   {
+	   System.out.println("Number of Elements: "+(rear+1));
+   }
+   
+   public void showQueue()
+   {
+	   int i=rear;
+	   System.out.println("End -> ");
+	   while(i>=0)
+	   {
+		   System.out.println(array[i]+" -> ");
+		   i--;
+	   }
+	   System.out.println("Beginning");
+   }
+}
