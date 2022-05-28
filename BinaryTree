@@ -1,0 +1,43 @@
+package Tree;
+
+public class BinaryTree {
+
+	Node root;
+	
+	public BinaryTree()
+	{
+		root=null;
+	}
+	
+	public Node newNode(int data)
+	{
+		root=new Node(data);
+		System.out.println(data +" inserted into the Binary Tree!");
+		return root;
+	}
+	
+	
+	public Node insertNode(Node root,int data)
+	{
+		if(root!=null)
+		{
+			if(root.data>data)
+			{
+				root.leftChild=insertNode(root.leftChild,data);
+			}
+			else
+			{
+				root.rightChild=insertNode(root.rightChild,data);
+			}
+					
+	}
+		else
+			root=newNode(data);
+		return root;
+}
+	public boolean isEmpty()
+	{
+		return root==null;
+	}
+}
+	
