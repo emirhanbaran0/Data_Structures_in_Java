@@ -35,6 +35,35 @@ public class BinaryTree {
 			root=newNode(data);
 		return root;
 }
+	
+		public void preOrder(Node root) {  //roots are written in the beginning
+		if (root != null) {
+			System.out.print(root.data + " ");
+			preOrder(root.leftChild);
+			preOrder(root.rightChild);
+		}
+	}
+
+	public void inOrder(Node root)  //roots are written in the middle
+	{
+		if(root!=null)
+		{	
+			inOrder(root.leftChild);
+			System.out.print(root.data+" ");
+			inOrder(root.rightChild);
+		}
+	}
+
+	public void postOrder(Node root) {  //roots are written in the end
+		if (root != null) {
+			postOrder(root.leftChild);
+			postOrder(root.rightChild);
+			System.out.print(root.data + " ");
+
+		}
+
+	}
+		
 	public boolean isEmpty()
 	{
 		return root==null;
