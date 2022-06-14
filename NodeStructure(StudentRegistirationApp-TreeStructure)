@@ -1,0 +1,131 @@
+
+public class StudentStructure {
+
+	Student root;
+	
+	StudentStructure()
+	{
+		root=null;
+	}
+	
+	public Student newStudent(int id ,int grade,String name,String surname)
+	{
+		Student root=new Student(id,grade,name, surname);
+		return root;
+	}
+	
+	public Student insertStudent(Student root,int id,int grade,String name,String surname)
+	{
+		if(root!=null)
+		{
+			if(root.id>id)
+			{
+				root.rightStudent=insertStudent(root.rightStudent,id,grade,name,surname);
+			}
+			else
+			{
+				root.rightStudent=insertStudent(root.rightStudent,id,grade,name,surname);
+			}
+		}
+		else
+		{
+			root=newStudent(id,grade,name,surname);
+			//System.out.println("Student added");
+		}
+			
+			return root;
+	}
+	public void inOrder(Student root)
+	{
+		if(root!=null)
+		{			
+			inOrder(root.leftStudent);
+			System.out.println("**************************");
+			System.out.println("Student ID: "+ root.id);
+			System.out.println("Student Name: "+ root.name);
+			System.out.println("Student Surname: "+ root.surname);
+			System.out.println("Student Grade: "+ root.grade);
+			
+			inOrder(root.rightStudent);
+		}
+	}
+	
+	public void preOrder(Student student)
+	{
+		if(student!=null)
+		{
+			System.out.println("**************************");
+			System.out.println("Student ID: "+ student.id);
+			System.out.println("Student Name: "+ student.name);
+			System.out.println("Student Surname: "+ student.surname);
+			System.out.println("Student Grade: "+ student.grade);
+			inOrder(student.leftStudent);
+			inOrder(student.rightStudent);
+		}
+	}
+	
+	public void postOrder(Student student)
+	{
+		if(student!=null)
+		{
+			
+			inOrder(student.leftStudent);
+			inOrder(student.rightStudent);
+			System.out.println("**************************");
+			System.out.println("Student ID: "+ student.id);
+			System.out.println("Student Name: "+ student.name);
+			System.out.println("Student Surname: "+ student.surname);
+			System.out.println("Student Grade: "+ student.grade);
+			
+		}
+	}
+	
+	public Student deleteStudent(Student root,int id)
+	{ Student temp1,temp2;
+		if(root==null)
+		{
+			System.out.println("There is no Student in the List!!");
+			
+			return null;
+		}
+		if(root.id==id)
+		{
+			
+			if(root.leftStudent==root.rightStudent) //In this case we know that the node is leave because 
+			{										//when we create node in constructor the initial value
+				root=null;							//of leftStudent and rightStudent is null.
+				return root;
+			}
+			else if(root.leftStudent==null)
+			{
+				temp1=root.rightStudent;
+				return temp1;
+			}
+			else if(root.rightStudent==null)
+			{
+				temp1=root.leftStudent;
+				return temp1;
+			}
+			else
+			{
+				temp1=temp2=root.rightStudent;
+				
+				while(temp1.leftStudent!=null)
+					temp1=temp1.leftStudent;
+				
+				temp1.leftStudent=root.leftStudent;
+				return temp2;
+			}
+		}
+		else
+		{
+			if(id<root.id)
+			{
+				root.leftStudent=deleteStudent(root.leftStudent,id);
+			}
+			else
+				root.rightStudent=deleteStudent(root.rightStudent,id);
+		}
+		return root;
+	}
+}

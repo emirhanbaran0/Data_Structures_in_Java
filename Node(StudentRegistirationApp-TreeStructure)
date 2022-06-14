@@ -1,0 +1,27 @@
+
+public class Student {
+
+	public int id,grade;
+	public String name,surname;
+	public Student leftStudent,rightStudent;
+	
+	Student()
+	{
+		grade=id=0;
+		surname=name="";
+		leftStudent=rightStudent=null;
+		
+	}
+
+	public Student(int id, int grade, String name, String surname) {
+		super();
+		this.id = id;
+		this.grade = grade;
+		this.name = name;
+		this.surname = surname;
+		leftStudent=rightStudent=null;
+	}
+	
+	
+	
+}

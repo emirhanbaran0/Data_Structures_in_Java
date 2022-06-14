@@ -1,0 +1,18 @@
+package Tree;
+
+public class main {
+
+	public static void main(String[] args) {
+		BinaryTree bTree=new BinaryTree();
+		bTree.root=bTree.insertNode(bTree.root, 10);
+		bTree.root=bTree.insertNode(bTree.root, 15);
+		bTree.root=bTree.insertNode(bTree.root, 8);
+		bTree.root=bTree.insertNode(bTree.root, 20);
+		bTree.root=bTree.insertNode(bTree.root, 4);
+		bTree.root=bTree.insertNode(bTree.root, 12);
+		System.out.println(bTree.root.data);
+		System.out.println(bTree.root.leftChild.data);
+		System.out.println(bTree.root.rightChild.data);
+	}
+
+}

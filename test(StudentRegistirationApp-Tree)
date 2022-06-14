@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		int choice,id,grade;
+		String name,surname;
+		
+		Scanner scan=new Scanner(System.in);
+		
+		StudentStructure sS1=new StudentStructure();
+		/*sS1.root=sS1.insertStudent(sS1.root, 10, 90, "Emirhan", "Baran");
+		sS1.root=sS1.insertStudent(sS1.root, 8, 80, "Burak", "Gül");
+		sS1.root=sS1.insertStudent(sS1.root, 42, 84, "İbrahim", "Özer");
+		sS1.root=sS1.insertStudent(sS1.root, 94, 100, "Furkan", "Çam");
+		sS1.root=sS1.insertStudent(sS1.root, 6, 76, "Ahmet", "Bul");*/
+		//sS1.inOrder(sS1.root);
+		while(true)
+		{
+			choice=menu();
+			switch(choice)
+			{
+			case 1:
+				System.out.println("Enter the information of Student that you will add: ");
+				System.out.println("Name: "); name=scan.nextLine();
+				System.out.println("Surname: "); surname=scan.nextLine();
+				System.out.println("ID: "); id=scan.nextInt(); scan.nextLine();
+				System.out.println("Grade: "); grade=scan.nextInt(); scan.nextLine();
+				
+				sS1.root=sS1.insertStudent(sS1.root, grade, choice, name, surname);
+				System.out.println("The student with "+ id+ " id is added into the list");
+				break;
+			case 2:
+				System.out.println("Enter the id of Student that you will delete: ");
+				System.out.println("ID: "); id=scan.nextInt(); scan.nextLine();
+				sS1.root=sS1.deleteStudent(sS1.root, id );
+				System.out.println("The student with "+ id+ " id is deleted from the list");
+				break;
+			case 3:
+				sS1.inOrder(sS1.root);
+				break;	
+			case 4:
+				sS1.preOrder(sS1.root);
+				break;
+			case 5:
+				sS1.postOrder(sS1.root);
+				break;
+			case 6:
+				System.exit(0);
+			default: 
+				System.out.println("You choose an invalid choice please make a new choice ");
+				choice=menu();
+			}
+			
+		}
+		
+		
+	
+	}
+	
+	private static int menu()
+	{	
+		int choice;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("\n\n1-Add Student: ");
+		System.out.println("2-Delete Student: ");
+		System.out.println("3-Show Student(in-Order): ");
+		System.out.println("4-Show Student(pre-Order): ");
+		System.out.println("5-Show StudentShow(post-Order)");
+		System.out.println("6-Exit");
+		System.out.println("Choice:");
+		choice=scan.nextInt(); scan.nextLine();
+		return choice;
+	}
+}
